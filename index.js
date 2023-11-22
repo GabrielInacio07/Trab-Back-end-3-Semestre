@@ -55,4 +55,15 @@ class ORM {
   Pessoa.exibir();
   Pessoa.atualizar(1, { ID: 4, nome: "Cristiano Ronaldo", idade: 38, profissão: "oMelhor" });
   Pessoa.exibir();
+
+/*
+Animal.criar({ID:1,nome:'Cachorro',tipo:'Doméstico',idade:2})
+Animal.criar({ID:2,nome:'Onça Pintada',tipo:'Silvestre',idade: 8})
+Animal.criar({ID:3,nome:'Baleia',tipo:'Mamífero',idade:7})
+Animal.exibir()
+Animal.excluir(1)
+Animal.exibir()
+Animal.atualizar(1,{ID:4,nome:'Jacaré',tipo:'Répetil',idade:5})
+Animal.exibir()
+*/
   
