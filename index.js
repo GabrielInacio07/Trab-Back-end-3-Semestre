@@ -1,70 +1,58 @@
-class ORM{
-    constructor(){
-    
+class ORM {
+    constructor() {}
+  
+    static Array = [];
+  
+    static criar(objeto) {
+      this.Array.push(objeto);
+      return objeto;
     }
+  
+    static atualizar(posicao, objeto) {
 
-    static criar(objeto){
-        this.Array.push(objeto)
-        return objeto
+        try {
+            if (posicao >= this.Array.length) {
+              throw new Error("ERROR[PARAMETRO]");
+            }
+          } catch (erro) {
+            console.error("A posição passada no parâmetro é inexistente");
+            console.error("Passe um valor que esteja coerente com a quantidade de objetos no vetor")
+            throw erro;
+          }
+      
+  
+      this.Array[posicao] = objeto;
+      return objeto;
     }
-
-    static atualizar(posicao,objeto){
-        this.Array[posicao] = objeto
-
-        return objeto
-    } 
-
-    static excluir(objeto){
-        
-        this.Array.splice(objeto,1)
-       
-        return objeto
+  
+    static excluir(posicao) {
+      this.Array.splice(posicao, 1);
+      return this.Array;
     }
-
-    static exibir(){
-        
-        return console.table(this.Array)
+  
+    static exibir() {
+      console.table(this.Array);
     }
-
-}
-
-class Pessoa extends ORM{
+  }
+  
+  class Pessoa extends ORM {
     constructor() {
-        super()
-        
+      super();
     }
-    
-    static Array = []
-
-    
-}
-
-class Animal extends ORM{
-    constructor(){
-        super()  
+  }
+  
+  class Animal extends ORM {
+    constructor() {
+      super();
     }
-
-    static Array = []
-}
-
-Pessoa.criar({ID:1,nome:'Gabriel Inácio',idade:19,profissão:'estudante'})
-Pessoa.criar({ID:2,nome:'Aaron Tads',idade:27,profissão:'Tec.Segurança'})
-Pessoa.criar({ID:3,nome:'LeBron James',idade:38,profissão:'Atleta'})
-Pessoa.exibir()
-Pessoa.excluir(0)
-Pessoa.exibir()
-Pessoa.atualizar(1,{ID:4,nome:'Cristiano Ronaldo',idade:38,profissão:'oMilhor'})
-Pessoa.exibir()
-
-
-/*
-Animal.criar({ID:1,nome:'Cachorro',tipo:'Doméstico',idade:2})
-Animal.criar({ID:2,nome:'Onça Pintada',tipo:'Silvestre',idade: 8})
-Animal.criar({ID:3,nome:'Baleia',tipo:'Mamífero',idade:7})
-Animal.exibir()
-Animal.excluir(1)
-Animal.exibir()
-Animal.atualizar({ID:4,nome:'Jacaré',tipo:'Répetil',idade:5})
-Animal.exibir()
-*/
-
+  }
+  
+  Pessoa.criar({ ID: 1, nome: "Gabriel Inácio", idade: 19, profissão: "estudante" });
+  Pessoa.criar({ ID: 2, nome: "Aaron Tads", idade: 27, profissão: "Tec.Segurança" });
+  Pessoa.criar({ ID: 3, nome: "LeBron James", idade: 38, profissão: "Atleta" });
+  Pessoa.exibir();
+  Pessoa.excluir(0);
+  Pessoa.exibir();
+  Pessoa.atualizar(1, { ID: 4, nome: "Cristiano Ronaldo", idade: 38, profissão: "oMelhor" });
+  Pessoa.exibir();
+  
